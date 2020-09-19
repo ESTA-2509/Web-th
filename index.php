@@ -1,4 +1,4 @@
-<base href="https://webshopdth.azurewebsites.net/" />
+<base href="https://webshopdth.azurewebsites.net/index.php" />
 <?php 
 session_start();
 include("include/connect.php");?>
