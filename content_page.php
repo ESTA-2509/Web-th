@@ -206,8 +206,7 @@
                 <div class="sanpham">			
 						<h2>ĐIỆN THOẠI MỚI</h2>
 					<div class="sanphamcon">
-						<?php 
-							$link=mysqli_connect("localhost","root","","dienthoai") or die("Cannot connect to the localhost");
+						<?php 							
 						    $sql1="select * from sanpham inner join danhmuc on sanpham.madm = danhmuc.madm where dequi=1 order by idsp  DESC limit 6 ";
 							$result1=mysqli_query($link,$sql1);
 						?>
