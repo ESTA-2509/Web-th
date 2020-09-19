@@ -53,8 +53,8 @@ a.submit();
 		if(isset($_SESSION['idnd'])){
 		
 		
-			$sql=mysql_query("select * from nguoidung where idnd='".$_SESSION['idnd']."'");
-			$row=mysql_fetch_array($sql);
+			$sql=mysqli_query($link,"select * from nguoidung where idnd='".$_SESSION['idnd']."'");
+			$row=mysqli_fetch_array($sql);
 			}
 		?>
 		<tr><td colspan="2" align="center" style="">Thông tin khách hàng</td></tr>

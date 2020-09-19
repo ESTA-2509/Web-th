@@ -4,12 +4,12 @@ include("include/connect.php");
 if(isset($_POST['login']))
 {
     $username = $_POST['user'];
-    $password = MD5($_POST['pass']);
-    $sql_check = mysql_query("select * from nguoidung where username = '$username'");
-    $dem = mysql_num_rows($sql_check);
+	$password = MD5($_POST['pass']);	
+    $sql_check = mysqli_query($link,"select * from nguoidung where username = '$username'");
+    $dem = mysqli_num_rows($sql_check);
     if($dem == 0)
     {
-        $_SESSION['thongbaolo'] = "Tài khoản không thồn tại";
+        $_SESSION['thongbaolo'] = "Tài khoản không tồn tại";
 		echo "
 							<script language='javascript'>
 								alert('Tài khoản không tồn tại');
@@ -19,8 +19,8 @@ if(isset($_POST['login']))
     }
     else
     {
-        $sql_check2 = mysql_query("select * from nguoidung where username = '$username' and password = '$password'");
-        $dem2 = mysql_num_rows($sql_check2);
+        $sql_check2 = mysqli_query($link,"select * from nguoidung where username = '$username' and password = '$password'");
+        $dem2 = mysqli_num_rows($sql_check2);
         if($dem2 == 0)
 			echo "
 							<script language='javascript'>
@@ -30,7 +30,7 @@ if(isset($_POST['login']))
 						";
         else
         {
-            $row = mysql_fetch_array($sql_check2);
+            $row = mysqli_fetch_array($sql_check2);
             
                 $_SESSION['username'] = $username;
 				$_SESSION['phanquyen'] = $row['phanquyen'];

@@ -1,4 +1,3 @@
-<base href="http://localhost/dienthoai/" />
 <?php 
 session_start();
 include("include/connect.php");?>
@@ -10,11 +9,11 @@ include("include/connect.php");?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title> Bán Điện Thoại </title>
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
-<link rel="stylesheet" style="style/sheet" href="css/index.css">
+<link rel="stylesheet"  href="css/index.css">
 
 
 
-<link rel="stylesheet" style="style/sheet" href="slide/engine/style.css">
+<link rel="stylesheet"  href="slide/engine/style.css">
 <script type="text/javascript" src="slide/engine/wowslider.js"></script>
 <script type="text/javascript" src="slide/engine/wowslider.mod.js"></script>
 
@@ -110,7 +109,7 @@ e.preventDefault();
 </script>
 
 <!-------------------------------------slide-------------------------------->
-<link rel="stylesheet" style="style/sheet" href="css/style1.css">
+<link rel="stylesheet"  href="css/style1.css">
 <script language="javascript" type="text/javascript" src="js/jquery.easing.js"></script>
 <script language="javascript" type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript">
@@ -242,14 +241,14 @@ e.preventDefault();
 						
 						<li>Địa chỉ: Hoàng Mai - Hà Nội </li>
 						<li>Điện thoại: 0972341193 - Hotline:  0972341193</li>
-						<li>Email:  dienthoaiabc1@gmail.com</li>
+						
 					</ul>
 				</div><!-- End .noidung -->
 				<div id="thanhngang">
 					<img src="img/thanhngang-footer.png">
 				</div><!-- End .thanhngang -->
 				<div id="copyright">
-					<p>Sinh Viên : Vũ Văn Thông | Lớp : 63CCT03 | Gmail : Vuthong.chipit@gmail.com<p>
+					<p>Nhóm : 2 | Lớp : NT113.L11 | Đại học Công nghệ thông tin - ĐHQG.HCM<p>
 				</div><!-- End .copyright -->
 			</div><!-- End .noidungfooter -->
 		</div><!-- End .bg-footer -->

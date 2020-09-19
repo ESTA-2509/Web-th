@@ -1,7 +1,7 @@
 ﻿<?php 
 	$idsp=$_GET['idsp'];
-	$rows=mysql_query("select * from sanpham where idsp=$idsp");
-	while ($row=mysql_fetch_array($rows))
+	$rows=mysqli_query($link,"select * from sanpham where idsp=$idsp");
+	while ($row=mysqli_fetch_array($rows))
 	{
 ?>
 

@@ -62,8 +62,8 @@ $mahd=$_GET['mahd'];
                       <div align="left">
                         <?php		
 $sql1="select * from hoadon where mahd='$mahd'";
-$rows1=mysql_query($sql1);
-$row1=mysql_fetch_array($rows1);
+$rows1=mysqli_query($link,$sql1);
+$row1=mysqli_fetch_array($rows1);
 
 ?>
                         <b>Thông tin Khách hàng:</b>                    </div>
@@ -102,8 +102,8 @@ $row1=mysql_fetch_array($rows1);
                               <td ><span class="style3">Phương thức thanh toán:</span></td>
 							   <?php		
 								$sql2="select * from chitiethoadon where mahd='$mahd'";
-								$rows2=mysql_query($sql2);
-								$row2=mysql_fetch_array($rows2);
+								$rows2=mysqli_query($link,$sql2);
+								$row2=mysqli_fetch_array($rows2);
 								
 								?>
                               <td ><?php if($row2['phuongthucthanhtoan']==1) echo "Qua bưu điện"; else if($row2['phuongthucthanhtoan']==2) echo "Qua thẻ ATM"; else echo"Thanh toán trực tiếp"; ?></td>
@@ -123,8 +123,8 @@ $row1=mysql_fetch_array($rows1);
    $stt=1;
 	$tong=0;
 	$sql="select * from chitiethoadon where mahd='$mahd'";
-	$rows=mysql_query($sql);
-	while($row=mysql_fetch_array($rows))
+	$rows=mysqli_query($link,$sql);
+	while($row=mysqli_fetch_array($rows))
 	{
 		$thanhtien=$row['gia']*$row['soluong'];
 	$tong+=$thanhtien;

@@ -28,8 +28,8 @@
     break;
     case"add":
     $sql="select soluong from sanpham where idsp=$stt";
-    $rows=mysql_query($sql);
-    $row=mysql_fetch_array($rows);
+    $rows=mysqli_query($link,$sql);
+    $row=mysqli_fetch_array($rows);
     if($row['soluong']==0)
     {
         echo '<script language="javascript">
@@ -62,8 +62,8 @@
     case"addcart":
    // foreach($_POST['idsp'] as $idsp)
     $sql="select soluong from sanpham where idsp=$stt";
-    $rows=mysql_query($sql);
-    $row=mysql_fetch_array($rows);
+    $rows=mysqli_query($link,$sql);
+    $row=mysqli_fetch_array($rows);
     if($row['soluong']==0)
     {
         echo '<script language="javascript">

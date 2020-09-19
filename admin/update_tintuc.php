@@ -41,7 +41,7 @@
 								WHERE matt='$ma'
 		");
 		}
-	$update=mysql_query($sql_update);
+	$update=mysqli_query($link,$sql_update);
 		if($update) {
 			echo "Sửa tin tức hành công";		
 			echo '<center><meta http-equiv="refresh" content="2;url=admin.php?admin=hienthitt"></center>';

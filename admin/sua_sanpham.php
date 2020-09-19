@@ -3,8 +3,8 @@
 		//include('../include/connect.php');
 		$idsp=$_GET['idsp'];
         $sql="select * from sanpham where idsp=$idsp";
-         $rows=mysql_query($sql);
-         $row=mysql_fetch_array($rows);
+         $rows=mysqli_query($link,$sql);
+         $row=mysqli_fetch_array($rows);
 ?>
 <form action="update_sanpham.php?idsp=<?php echo $idsp;?>" method="post" name="frm" onsubmit="" enctype="multipart/form-data">
 	<table>
@@ -43,8 +43,8 @@
 					<select name="danhmuc">
 					<?php 
 						$sql1="select * from danhmuc";
-						$rows1=mysql_query($sql1);
-						while($row1=mysql_fetch_array($rows1))
+						$rows1=mysqli_query($link,$sql1);
+						while($row1=mysqli_fetch_array($rows1))
 					{
 					?>
 					<option value="<?php echo $row1['madm']?>" <?php if($row['madm']==$row1['madm']) echo 'selected="selected"';?>><?php echo $row1['tendm']?></option>

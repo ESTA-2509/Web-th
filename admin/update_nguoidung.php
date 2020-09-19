@@ -18,7 +18,7 @@
 							phanquyen='$phanquyen'
 							where idnd=$id
 	");
-	$update=mysql_query($sql_update);
+	$update=mysqli_query($link,$sql_update);
 	if($update)
 	{
 		redirect("admin.php?admin=hienthind", "Bạn đã sửa thành công người dùng.", 2 );

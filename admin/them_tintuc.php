@@ -31,7 +31,7 @@
 		move_uploaded_file($file_tmp,$upload_image.$file__name__);
 		
 		$insert="INSERT INTO tintuc VALUES('','$tieude', '$ndngan', '$noidung', '$file__name__', '$ngay', '$tacgia','1')";
-		$query=mysql_query($insert);
+		$query=mysqli_query($link,$insert);
 		if($query) {
 			echo "Thêm tin tức hành công";		
 			echo '<meta http-equiv="refresh" content="2;url=admin.php?admin=hienthitt">';

@@ -20,7 +20,7 @@ if(isset($_POST['submit']))
 		$ngay=date("Y").":".date("m").":".date("d").":".date("H").":".date("i").":".date("s");
 	
 	$insert="INSERT INTO nguoidung VALUES('','$tennd', '$user', '$pass','$ngaysinh','$gioitinh', '$email','$dienthoai', '$diachi','$ngay', '1')";
-		$query=mysql_query($insert);
+	$query=mysqli_query($link,$insert);
 		if($query) {
 		redirect("index.php", "Bạn đã đăng ký thành công.", 2 );
 			//echo "<p align = center>Đăng ký thành công!</p>";

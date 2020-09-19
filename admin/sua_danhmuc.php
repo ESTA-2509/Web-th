@@ -30,16 +30,16 @@ if(isset($_POST['btnthem']))
 	  $m = $_POST['tendm']; //Không đk dùng $_GET[] 
 	  $d = $_POST['dequi'];
       $sql="UPDATE danhmuc SET tendm='".$m."', dequi='".$d."' WHERE madm='".$madm."'"; //chưa khai báo $madm mà đã dùng.
-      mysql_query($sql);
-	  mysql_error();
+      mysqli_query($link,$sql);
+	  mysqli_error($link);
       header("location:admin.php?admin=hienthidm");
       //exit();
    }
 }
 
-$query=mysql_query("SELECT * FROM danhmuc WHERE madm= '{$_GET['madm']}' ");  // OK nhé
+$query=mysqli_query($link,"SELECT * FROM danhmuc WHERE madm= '{$_GET['madm']}' ");  // OK nhé
 // Cho vòng lặp vào
-$row=mysql_fetch_array($query); // chưa có mysql_query nhé. ở trên có kia. 
+$row=mysqli_fetch_array($query); // chưa có mysqli_query nhé. ở trên có kia. 
 
 ?>
 
@@ -63,8 +63,8 @@ $row=mysql_fetch_array($query); // chưa có mysql_query nhé. ở trên có kia
             <option value="0">Danh mục chính</option>
              <?php 
             $sql1="select * from danhmuc where dequi=0";
-            $rows1=mysql_query($sql1);
-            while($row1=mysql_fetch_array($rows1))
+            $rows1=mysqli_query($link,$sql1);
+            while($row1=mysqli_fetch_array($rows1))
             {
             ?>
 				<option value="<?php echo $row1['madm'] ?>" <?php if($row1['madm']==$row['dequi']) echo 'selected="selected"'?> ><?php echo $row1['tendm']?></option>

@@ -13,7 +13,7 @@
 			{
 				if ($value==1)
 				$sql="update hoadon set trangthai=2 where matt='$matt'";
-				mysql_query($sql);
+				mysqli_query($link,$sql);
 				unset($_SESSION['id']);
 				echo "
 							<script language='javascript'>
@@ -29,7 +29,7 @@
 				{
 					if ($value==1)
 					$sql="update hoadon set trangthai=3 where matt='$matt'";
-					mysql_query($sql);
+					mysqli_query($link,$sql);
 					unset($_SESSION['id']);
 					echo "
 							<script language='javascript'>
@@ -45,7 +45,7 @@
 						{
 							if ($value==1)
 							$sql="delete from tintuc where matt='$matt'";
-							mysql_query($sql);
+							mysqli_query($link,$sql);
 							unset($_SESSION['id']);
 							echo "
 							<script language='javascript'>

@@ -2,8 +2,8 @@
 <?php
 		$idnd=$_GET['idnd'];
         $sql="select * from nguoidung where idnd='".$_GET['idnd']."'";
-         $rows=mysql_query($sql);
-         $row=mysql_fetch_array($rows);
+         $rows=mysqli_query($link,$sql);
+         $row=mysqli_fetch_array($rows);
 ?>
 <form action="update_nguoidung.php?idnd=<?php echo $idnd;?>" method="post" name="frm" onsubmit="return kiemtra()" enctype="multipart/form-data">
 	<table>

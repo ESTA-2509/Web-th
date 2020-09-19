@@ -28,8 +28,8 @@ if(isset($_GET['timkiem']))
   }
   
  
-	$rows=mysql_query($sql);
-	$tong=mysql_num_rows($rows);
+	$rows=mysqli_query($link,$sql);
+	$tong=mysqli_num_rows($rows);
     if($tong<0)
      echo"Không tìm được sản phẩm nào";
     else
@@ -40,7 +40,7 @@ if(isset($_GET['timkiem']))
 	<div class="sanphamcon">
     <?php
 
-        while($row=mysql_fetch_array($rows))
+        while($row=mysqli_fetch_array($rows))
         {
 ?>
 		

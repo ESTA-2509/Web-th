@@ -2,7 +2,7 @@
 include '../include/connect.php';
 include 'function/function.php';
 $delete = "delete from tintuc where matt='{$_GET['matt']}'";
-$del = mysql_query($delete);
+$del = mysqli_query($link,$delete);
 if ($del)
 	//echo "thanh cong";
 	//header("location: index.php?admin=hienthind");

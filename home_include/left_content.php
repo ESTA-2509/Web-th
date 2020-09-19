@@ -2,13 +2,15 @@
  <div id="danhmucsp">
 					<div class="center">
 					<h4>SẢN PHẨM</h4>
-					<?php 
+					<?php					
 					   $sql="select * from danhmuc where dequi=1";
-					   $result=mysql_query($sql);
+					   $result=mysqli_query($link,$sql);
 					?>
 						<ul>
 						<?php 
-						   while($row=mysql_fetch_array($result))
+						
+
+						   while($row=mysqli_fetch_array($result))
 						   {
 						?>
 							<li><a href="index.php?madm=<?php echo $row['madm'] ?>"><?php echo $row["tendm"];?></a></li>
@@ -23,12 +25,12 @@
 					<div class="center">
 						<h4> PHỤ KIỆN</h4>
 						<?php 
-					   $sql="select * from danhmuc where dequi=2";
-					   $result=mysql_query($sql);
+					   $sql="select * from danhmuc where dequi=2";					   
+					$result=mysqli_query($link,$sql);
 					?>
 						<ul>
 						<?php 
-						   while($row=mysql_fetch_array($result))
+						   while($row=mysqli_fetch_array($result))
 						   {
 						?>
 							<li><a href="index.php?madm=<?php echo $row['madm'] ?>"><?php echo $row["tendm"];?></a></li>

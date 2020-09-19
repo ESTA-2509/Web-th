@@ -1,8 +1,8 @@
 ﻿<?php 
 
-	$matt=$_GET['matt'];
-	$select=mysql_query("select * from tintuc where matt='".$matt."'");
-	while($row=mysql_fetch_array($select))
+	$matt=$_GET['matt'];	
+	$select=mysqli_query($link,"select * from tintuc where matt='".$matt."'");
+	while($row=mysqli_fetch_array($select))
 	{
 ?>
 <div class="chitiettintuc">

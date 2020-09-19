@@ -11,8 +11,8 @@ $ngay=date('Y-m-d');
 		if(isset($_SESSION['idnd'])){
 		
 		
-			$sql=mysql_query("select * from nguoidung where idnd='".$_SESSION['idnd']."'");
-			$row=mysql_fetch_array($sql);
+			$sql=mysqli_query($link,"select * from nguoidung where idnd='".$_SESSION['idnd']."'");
+			$row=mysqli_fetch_array($sql);
 			
 			$idnd=$row['idnd'];
 	
@@ -24,33 +24,33 @@ $sql="INSERT INTO hoadon(idnd,hoten,diachi,dienthoai,email,ngaydathang,trangthai
 	$sql="INSERT INTO hoadon(hoten,diachi,dienthoai,email,ngaydathang,trangthai) VALUES 
 ('$hoten', '$diachi', '$dienthoai', '$email', '$ngay','1')";
 
-	mysql_query($sql);
+	mysqli_query($link,$sql);
 	
-    $mahd=mysql_insert_id();
+    $mahd=mysqli_insert_id($link);
 	
     foreach($_SESSION['cart'] as $stt => $soluong)
             {
                $sql="select * from sanpham where idsp=$stt";
-               $rows=mysql_query($sql);
-               $row=mysql_fetch_array($rows);
+               $rows=mysqli_query($link,$sql);
+               $row=mysqli_fetch_array($rows);
                //$mahd=$row['mahd'];
                $tensp=$row['tensp'];
         
                $gia=$row['gia']*((100-$row['khuyenmai1'])/100);
                $sql1 ="insert into chitiethoadon(mahd,Tensp,Soluong,gia,phuongthucthanhtoan) values('$mahd','$tensp','$soluong','$gia','$phuongthuc')";
-              mysql_query($sql1);
+              mysqli_query($link,$sql1);
               
             }
     foreach($_SESSION['cart'] as $stt => $soluong)
             {
                
                $sql="select * from sanpham where idsp=$stt";
-               $rows=mysql_query($sql);
-               $row=mysql_fetch_array($rows);
+               $rows=mysqli_query($link,$sql);
+               $row=mysqli_fetch_array($rows);
                $ban=$row['daban']+$soluong;
                $sql="UPDATE sanpham SET daban='$ban' WHERE idsp = $stt";
                
-                mysql_query($sql);
+                mysqli_query($link,$sql);
             }
 
 unset($_SESSION['cart']);

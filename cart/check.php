@@ -6,8 +6,8 @@
             {
                
                $sql="select soluong,tensp,daban from sanpham where idsp=$stt";
-               $rows=mysql_query($sql);
-               $row=mysql_fetch_array($rows);
+               $rows=mysqli_query($link,$sql);
+               $row=mysqli_fetch_array($rows);
                $sl=$_SESSION['cart'][$stt];
                if($row['soluong']==0 or ($row['soluong']-$row['daban'])<$sl)
                {

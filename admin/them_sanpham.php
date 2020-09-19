@@ -35,7 +35,7 @@
 		move_uploaded_file($file_tmp,$upload_image.$file__name__);
 		$madm=$_POST['madm'];
 		$insert="INSERT INTO sanpham VALUES('', '$ten_sanpham', '$file__name__', '$mau', '$chitiet', '$soluong','0', '$gia', '$khuyenmai1', '$khuyenmai2', '$madm', '$ngay','0')";
-		$query=mysql_query($insert);
+		$query=mysqli_query($link,$insert);
 		if($query) {
 			echo "<p align = center>Thêm sản phẩm thành công!</p>";
 			echo '<meta http-equiv="refresh" content="1;url=admin.php?admin=themsp">';
@@ -82,14 +82,14 @@
                 	<select name="madm">
                 	<option value="">Chọn danh muc</option>
                     <?php
-						$show = mysql_query("SELECT * FROM danhmuc WHERE dequi=0");
-						while($show1 = mysql_fetch_array($show))
+						$show = mysqli_query($link,"SELECT * FROM danhmuc WHERE dequi=0");
+						while($show1 = mysqli_fetch_array($show))
 						{
 							$madm1 = $show1['madm'];	
 							$tendm1 = $show1['tendm'];
 							echo "<option value='".$madm1."'>".$tendm1."</option>";	
-								$show2 = mysql_query("SELECT * FROM danhmuc WHERE dequi='".$madm1."'");
-								while($show3 = mysql_fetch_array($show2))
+								$show2 = mysqli_query($link,"SELECT * FROM danhmuc WHERE dequi='".$madm1."'");
+								while($show3 = mysqli_fetch_array($show2))
 								{
 									$madm2 = $show3['madm'];	
 									$tendm2 = $show3['tendm'];

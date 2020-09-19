@@ -7,8 +7,8 @@
 </head>
 <?php
 	include '../include/connect.php';
-	$hienthi = mysql_query("SELECT * FROM danhmuc");
-			 $dem = mysql_num_rows($hienthi);
+	$hienthi = mysqli_query($link,"SELECT * FROM danhmuc");
+			 $dem = mysqli_num_rows($hienthi);
 ?>
 <div class="quanlysp">
 	<h3>QUẢN LÝ DANH MỤC</h3>
@@ -29,7 +29,7 @@
 			
 			if($dem !="")
 			{
-				while($bien=mysql_fetch_array($hienthi))
+				while($bien=mysqli_fetch_array($hienthi))
 				{
 				
 		?>

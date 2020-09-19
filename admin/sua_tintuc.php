@@ -2,8 +2,8 @@
 <?php
 		$matt=$_GET['matt'];
         $sql="select * from tintuc where matt='".$_GET['matt']."'";
-         $rows=mysql_query($sql);
-         $row=mysql_fetch_array($rows);
+         $rows=mysqli_query($link,$sql);
+         $row=mysqli_fetch_array($rows);
 ?>
 <form action="update_tintuc.php?matt=<?php echo $matt;?>" method="post" name="frm" onsubmit="" enctype="multipart/form-data">
 	<table>

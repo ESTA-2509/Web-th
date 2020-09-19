@@ -74,8 +74,8 @@
 						$sql.=  "LIMIT $from, $max_results";
 						
 		
-					$query=mysql_query($sql);
-					$total=mysql_num_rows($query);
+					$query=mysqli_query($link,$sql);
+					$total=mysqli_num_rows($query);
 					if($total>0)
 					{
 					?>
@@ -83,14 +83,14 @@
 						<div class="sanpham">	
 							<?php
 							$sql1="select tendm from danhmuc where madm='{$_GET['madm']}'";
-							$query1=mysql_query($sql1);
-							$row=mysql_fetch_array($query1);
+							$query1=mysqli_query($link,$sql1);
+							$row=mysqli_fetch_array($query1);
 							?>
 						<h2><?php echo $row['tendm']?></h2>
 							<div class="sanphamcon">
 								
 								<?php 
-								  while ($result=mysql_fetch_array($query))
+								  while ($result=mysqli_fetch_array($query))
 								  { ?>
 								
 								<div class="dienthoai">
@@ -121,9 +121,15 @@
 						</div><!-- End .sanpham-->
 						<div class="phantrang">
 						<?php 
-						
+						if (!function_exists('mysqli_result')) {
+							function mysqli_result($res, $row, $field=0) {
+							  $res->data_seek($row);
+							  $datarow = $res->fetch_array();
+							  return $datarow[$field];
+							}
+						  }
 						// Tính tổng kết quả trong toàn DB:  
-						$total_results = mysql_result(mysql_query("SELECT COUNT(*) as Num FROM sanpham where madm='{$_GET['madm']}'"),0);  
+						$total_results = mysqli_result(mysqli_query($link,"SELECT COUNT(*) as Num FROM sanpham where madm='{$_GET['madm']}'"),0);  
 
 						// Tính tổng số trang. Làm tròn lên sử dụng ceil()  
 						$total_pages = ceil($total_results / $max_results);  
@@ -161,12 +167,12 @@
 				<div class="sanpham">			
 						<h2>ĐIỆN THOẠI BÁN CHẠY</h2>
 					<div class="sanphamcon">
-					    <?php 
-						    $sql1="select * from sanpham inner join danhmuc on sanpham.madm = danhmuc.madm where dequi=1 order by daban  DESC limit 6 ";
-							$result1= mysql_query($sql1);
+						<?php 						
+						    $sql1="select * from sanpham inner join danhmuc on sanpham.madm = danhmuc.madm where dequi=1 order by daban  DESC limit 6 ";							
+							$result1= mysqli_query($link,$sql1);
 						?>
 						<?php 
-						  while ($row=mysql_fetch_array($result1))
+						  while ($row=mysqli_fetch_array($result1))
 						  { ?>
 						
 						<div class="dienthoai">
@@ -200,12 +206,13 @@
                 <div class="sanpham">			
 						<h2>ĐIỆN THOẠI MỚI</h2>
 					<div class="sanphamcon">
-					    <?php 
+						<?php 
+							$link=mysqli_connect("localhost","root","","dienthoai") or die("Cannot connect to the localhost");
 						    $sql1="select * from sanpham inner join danhmuc on sanpham.madm = danhmuc.madm where dequi=1 order by idsp  DESC limit 6 ";
-							$result1= mysql_query($sql1);
+							$result1=mysqli_query($link,$sql1);
 						?>
 						<?php 
-						  while ($row=mysql_fetch_array($result1))
+						  while ($row=mysqli_fetch_array($result1))
 						  { ?>
 						
 						<div class="dienthoai">

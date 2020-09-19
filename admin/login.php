@@ -28,8 +28,8 @@ if(isset($_POST['login']))
 {
     $username = $_POST['user'];
     $password = MD5($_POST['pass']);
-    $sql_check = mysql_query("select * from nguoidung where username = '$username'");
-    $dem = mysql_num_rows($sql_check);
+    $sql_check = mysqli_query($link,"select * from nguoidung where username = '$username'");
+    $dem = mysqli_num_rows($sql_check);
     if($dem == 0)
     {
         echo "<p class='thongbao1'>Tài khoản không tồn tại</p>";
@@ -37,14 +37,14 @@ if(isset($_POST['login']))
     else
     {
         $sql_check2 = "select * from nguoidung where username = '$username' and password = '$password'";
-		$row=mysql_query($sql_check2);	
-        $dem2 = mysql_num_rows($row);
+		$row=mysqli_query($link,$sql_check2);	
+        $dem2 = mysqli_num_rows($row);
         if($dem2 == 0)
             echo "<p class='thongbao1'>Mật khẩu không chính xác</p>";
         else
         {
 	
-		 while($rows = mysql_fetch_array($row))
+		 while($rows = mysqli_fetch_array($row))
             {
               $_SESSION['username'] = $username;
 				$_SESSION['phanquyen'] = $row['phanquyen'];

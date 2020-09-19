@@ -15,12 +15,20 @@
 	</tr>
 	
 	<?php
-
+		$db = new PDO(
+			'mysql:host=localhost;dbname=dienthoai', // host, database
+			'root', // user goes here
+			'', // password goes here
+			array(
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+				PDO::ATTR_PERSISTENT => false
+			)
+		);
 		$sql=  "select * from sanpham";
-		$query=mysql_query($sql);
-		$total=mysql_num_rows($query);
+		$query=mysqli_query($link,$sql);
+		$total=mysqli_num_rows($query);
 		$idsp=1;
-		while($row=mysql_fetch_array($query))
+		while($row=mysqli_fetch_array($query))
 		{
 			
 			if($row['khuyenmai2']!="")

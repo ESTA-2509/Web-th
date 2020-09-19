@@ -1,17 +1,15 @@
 ﻿					
 
    
-		<?php 
-	   $sql="select * from danhmuc where dequi=1 order by madm";
-	   $result=mysql_query($sql);
-	
-	 
-	    while($row=mysql_fetch_array($result))
+		<?php 		
+	   $sql="select * from danhmuc where dequi=1 order by madm";	   
+	   $result=mysqli_query($link,$sql);		 
+	    while($row=mysqli_fetch_array($result))
 		{ 
 		?> 	<div class="sanpham"> <?php 
 			$sql1="select * from sanpham where madm={$row['madm']} order by idsp  LIMIT 0,6";
-			$kq=mysql_query($sql1);
-			$dem = mysql_num_rows($kq);
+			$kq=mysqli_query($link,$sql1);
+			$dem = mysqli_num_rows($kq);
 			if($dem>0)
 			{
 			?>
@@ -22,7 +20,7 @@
 			</div>
 		<?php } ?>
     	<div class="sanphamcon">
-			<?php while($rows=mysql_fetch_array($kq))
+			<?php while($rows=mysqli_fetch_array($kq))
 			{ ?>
 			<div class="dienthoai">
 									<?php 

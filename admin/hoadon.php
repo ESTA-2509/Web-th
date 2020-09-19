@@ -4,8 +4,8 @@
 	include ('../include/connect.php');
 	
     $select = "select * from hoadon";
-    $query = mysql_query($select);
-    $dem = mysql_num_rows($query);
+    $query = mysqli_query($link,$select);
+    $dem = mysqli_num_rows($query);
 ?>
 <div class="quanlysp">
 	<h3>QUẢN LÝ HÓA ĐƠN</h3>
@@ -55,13 +55,13 @@
 
 		// Chạy 1 MySQL query để hiện thị kết quả trên trang hiện tại  
 
-		$sql = mysql_query("SELECT * FROM hoadon ORDER by mahd DESC  LIMIT $from, $max_results"); 
+		$sql = mysqli_query($link,"SELECT * FROM hoadon ORDER by mahd DESC  LIMIT $from, $max_results"); 
 
 
 
 								
     if($dem > 0)
-        while ($bien = mysql_fetch_array($sql))
+        while ($bien = mysqli_fetch_array($sql))
         {
 ?>
             <tr class='noidung_hienthi_sp'>
@@ -87,8 +87,15 @@
 	<div id="phantrang_sp">
 	
 	<?php
+			if (!function_exists('mysqli_result')) {
+				function mysqli_result($res, $row, $field=0) {
+				  $res->data_seek($row);
+				  $datarow = $res->fetch_array();
+				  return $datarow[$field];
+				}
+			  }
 			// Tính tổng kết quả trong toàn DB:  
-			$total_results = mysql_result(mysql_query("SELECT COUNT(*) as Num FROM hoadon"),0);  
+			$total_results = mysqli_result(mysqli_query($link,"SELECT COUNT(*) as Num FROM hoadon"),0);  
 
 			// Tính tổng số trang. Làm tròn lên sử dụng ceil()  
 			$total_pages = ceil($total_results / $max_results);  

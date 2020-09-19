@@ -86,8 +86,8 @@ if(isset($_GET['admin']))
 					</tr>
 					<?php 
 						$i=1;
-						$sql=mysql_query("select * from hoadon where trangthai='1'");
-						while($row=mysql_fetch_array($sql))
+						$sql=mysqli_query($link,"select * from hoadon where trangthai='1'");
+						while($row=mysqli_fetch_array($sql))
 						{
 					
 					?>

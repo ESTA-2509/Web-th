@@ -21,10 +21,18 @@
 		$from = (($page * $max_results) - $max_results);  
 
 		// Chạy 1 MySQL query để hiện thị kết quả trên trang hiện tại  
+		$db = new PDO(
+			'mysql:host=localhost;dbname=dienthoai', // host, database
+			'root', // user goes here
+			'', // password goes here
+			array(
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+				PDO::ATTR_PERSISTENT => false
+			)
+		);
+		$sql = mysqli_query($link,"SELECT * FROM tintuc ORDER by matt DESC  LIMIT $from, $max_results"); 
 
-		$sql = mysql_query("SELECT * FROM tintuc ORDER by matt DESC  LIMIT $from, $max_results"); 
-
-		while($row=mysql_fetch_array($sql))
+		while($row=mysqli_fetch_array($sql))
 		{
 	?>
 	
@@ -50,7 +58,12 @@
 	
 	<?php
 			// Tính tổng kết quả trong toàn DB:  
-			$total_results = mysql_result(mysql_query("SELECT COUNT(*) as Num FROM tintuc"),0);  
+			function mysqli_result($res, $row, $field=0) { 
+				$res->data_seek($row); 
+				$datarow = $res->fetch_array(); 
+				return $datarow[$field]; 
+			} 
+			$total_results = mysqli_result(mysqli_query($link,"SELECT COUNT(*) as Num FROM tintuc"),0);  
 
 			// Tính tổng số trang. Làm tròn lên sử dụng ceil()  
 			$total_pages = ceil($total_results / $max_results);  
